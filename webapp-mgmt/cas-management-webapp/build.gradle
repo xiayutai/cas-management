@@ -1,3 +1,6 @@
+apply plugin: "kotlin"
+apply plugin: "kotlin-spring"
+apply plugin: "eclipse-wtp"
 apply plugin: "war"
 apply plugin: "org.springframework.boot"
 apply plugin: "com.moowork.node"
@@ -48,12 +51,14 @@ check.dependsOn(ngLint)
 bootRun {
     addResources = true
     systemProperties = System.properties
+    /*
     def list = []
     if (rootProject.enableRemoteDebugging) {
         list.add("-Xrunjdwp:transport=dt_socket,address=5006,server=y,suspend=n")
     }
     
     jvmArgs = list
+    */
     if (!Boolean.getBoolean("skipClientBuild")) {
         dependsOn(buildClientDev)
     }
@@ -105,4 +110,5 @@ dependencies {
     implementation libraries.thymeleaf
     implementation libraries.thymeleafdialect
     implementation libraries.thymeleafboot
-}
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
+    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")}
