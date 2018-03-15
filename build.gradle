@@ -1,4 +1,4 @@
-description = "Apereo CAS Management Application $version"
+description = "Apereo CAS Management Application $version 单点登陆管理后台"
 
 defaultTasks "clean", "build"
 
